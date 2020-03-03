@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str="cdcdcscsdvcccfvfdvsva";
+    var o = {};
+    for(var i=0;i<str.length;i++){
+        var char = str.charAt(i);
+        // console.log(char)
+        if(o[char] == null){
+            o[char] = 1
+        }else{
+            o[char]++;
+        }
+    }
+    console.log(o)
+     var max = 0;
+     for(var key in o){
+         if(max < o[key]){
+             max = o[key]
+         }
+     }
+     for(var key in o){
+         if(o[key] == max){
+             console.log("最多字符"+key)
+             console.log("次数"+max
+             )
+         }
+     }
+    </script>
+<!-- <script>
+var str="cdcdcscsdvcccfvfdvsva";
+var o = {};
+for(var i=0;i<str.length;i++){
+    var char = str.charAt(i);
+    if(o[char]){
+        o[char]++;
+    }else{
+        o[char] = 1
+    }
+}
+console.log(o)
+ var max = 0;
+ for(var key in o){
+     if(max < o[key]){
+         max = o[key]
+     }
+ }
+ for(var key in o){
+     if(o[key] == max){
+         console.log("最多字符"+key)
+         console.log("次数"+max
+         )
+     }
+ }
+</script> -->
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: #666;
+        }
+
+        div {
+            height: 150px;
+            width: 300px;
+            border: 1px solid #f00;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+        }
+
+        h3 {
+            padding: 15px 30px;
+            line-height: 35px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            cursor: move;
+        }
+
+        h3 span {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        li {
+            list-style: none;
+            line-height: 25px;
+            padding-left: 12px;
+        }
+
+        li span {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h3 id="nav"><span id="back">点我原路返回</span></h3>
+        <ul>
+            <li>Drag:<span>flase</span></li>
+            <li>Top:<span>150</span></li>
+            <li>Left:<span>150</span></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var box = document.getElementById('box'),
+        
+        nav = document.getElementById('nav'),
+        
+        back = document.getElementById('back'),
+        
+        spans = document.getElementsByTagName('span'),
+        
+        rouse = [{ x: box.offsetLeft, y: box.offsetTop }],
+        Drag = false;
+
+    nav.onmousedown = function () {
+        Drag = true;
+        console.log(13)
+    }
+    document.onmousemove = function (e) {
+        var e = e || window.event;
+        if (Drag == false) {
+            return false;
+        } else {
+            box.style.left = e.clientX + "px"
+            box.style.top = e.clientY + "px"
+            rouse.push({ x: box.offsetLeft, y: box.offsetTop })
+            offset();
+        }
+    }
+    document.onmouseup = function () {
+        Drag = false;
+        offset();
+    }
+    back.onclick = function () {
+        if (rouse.length == 1) return false;
+        var timer = setInterval(function () {
+            var opos = rouse.pop();
+            // opos ? (box.style.left= opos.x + "px",box.style.top=opos.y+"px",offset()):clearInterval(timer)
+            if (opos != null) {
+                box.style.left = opos.x + "px";
+                box.style.top = opos.y + "px";
+                offset()
+            } else {
+                clearInterval(timer)
+            }
+        }, 3)
+    }
+    function offset() {
+        spans[1].innerHTML = Drag;
+        spans[2].innerHTML = box.offsetLeft;
+        spans[3].innerHTML = box.offsetTop;
+
+    }
+</script>
