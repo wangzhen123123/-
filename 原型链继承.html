@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function person(){
+    this.name="lll"
+    this.sayname=function(){
+        alert(this)
+    }
+}
+var person=new person();
+console.log(person.__proto__.__proto__)
+
+// function person(name){
+//    this.name=name;
+// }
+// person.prototype.getname=function(){
+//     return this.name;
+// }
+//   function par(age){
+//       this.age=age;
+// }
+// par.prototype= new person("lili");
+// var a=new par()
+// console.log(a.getname())
+</script>
+</html>

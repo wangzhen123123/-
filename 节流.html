@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    var throttle = function (func, delay) {
+         prev = Date.now();//第一次执行的时间
+        return function () {
+            var context = this;//window
+            var args = arguments;//实际参数，需要两个，handle，2000
+            var now=Date.now();//再一次触发的时间
+            if(now-prev>=delay){
+                // func.apply(context,["hello",args]);继承的时候同时会调用一下要继承的函数，操作谁对象this指向就是谁
+                func();
+                prev=Date.now();//触发的时间作为起始时间
+            }
+        }
+    }
+    function handle(argue){
+        console.log(argue);
+    }
+    window.addEventListener('scroll',throttle(handle,2000))
+</script>
+
+</html>

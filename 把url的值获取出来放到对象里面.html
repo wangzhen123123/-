@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function huoqu(url){
+    var str=url.split("?")[1];//username=123&&pwd=456
+    var iterms = str.split("&");//username=123 pwd=456
+    var arr,json={}
+    for(var i=0;i<iterms.length;i++){
+        arr=iterms[i].split("=");//username 123
+        json[arr[0]]=arr[1]
+    }
+    return json;
+}
+var url="http://www.cdscs.com?username=123&pwd=456&sex=man"
+var obj=huoqu(url);
+console.log(obj)
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// function classa(scolor){
+//     this.color=scolor;
+//     this.talk=function(){
+//         alert(this.color)
+//     }
+// }
+// function classb(scolor,sname){
+//     this.new=classa;//直接把a的函数拿过来给了b的一个属性
+//     this.new(scolor);//必须要调用a一次之后才存在
+//     this.name=sname;
+//     this.say=function(){
+//         alert(this.name)
+//     }
+// }
+// var objb=new classb("red","ll")
+// objb.talk()
+// var objx=new objb.new("red")
+// objx.talk()
+// objb.new("red")
+
+
+// function A(){
+//     this.a=10;
+// }
+// function B(){
+//     var b=A;
+//     b()
+//     console.log(this.a)
+// }
+// B()
+
+function ani(){
+    this.name="animate"
+    this.say=function(){
+        alert(this.name)
+    }
+}
+function cat(){
+    this.color="red"
+}
+var   an=new ani();
+var cat =new cat();
+ani.call(cat,"")
+cat.say()
+</script>
+</html>

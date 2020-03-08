@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+// function deepclone(obj){//  是实现对象深拷贝的方法，参数obj是需要拷贝的原对象，用完这个方法之后需要返回一个新的对象，也就是使用深拷贝，拷贝出来的对象，它会指向一个新的内存空间
+//     var objclone = Array.isArray(obj)?[]:{};//原对象创建出来的  如果原对象是数组新对象创建出来的就是一个新数组，如果原对象是一个对的话创建出来的就是一个空对象
+
+//     if(obj && typeof obj==="object"){//存在深拷贝的只有数组和对象  
+//        for(key in obj){
+//            if(obj.hasOwnProperty(key)){
+//                //判断obj子元素是否为对象，如果是，递归复制
+//                if(obj[key]&&typeof obj[key]==="object"){
+//                    objclone[key] = deepclone(obj[key]);
+//                }else{
+//                    //如果不是，简单复制
+//                    objclone[key] = obj[key]
+//                }
+//            }
+//        }
+//     }
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+function clonetrue(obj){
+    var objnew=Array.isArray(obj)?[]:{};//原对象创建出来的  如果原对象是数组新对象创建出来的就是一个新数组，如果原对象是一个对的话创建出来的就是一个空对象
+    if(obj && typeof obj==="object"){//obj就是为判断是否是空，typeof就是判断是否是对象
+         for(key in obj){//为了之后的复制做准备，以为不便利没办法赋值
+        if(obj.hasOwnProperty(key)){//单纯判断子元素是否为对象
+            if(obj[key] && typeof obj[key]==="object"){
+                objnew[key]=clonetrue(obj[key]);
+            }else{
+              objnew[key]=obj[key];
+        }
+        }
+    } return objnew
+    }
+  else{
+      return obj;
+  }
+}
+var a=[1,2,3,5]
+b=clonetrue(a)
+// b=a
+a[0]=6;
+console.log(a,b)
+// var obj={
+//     "children":[{
+//         "name":"cdcd",
+//         "children":{
+//             "name":"cndj"
+//         }
+//     }]
+// }
+</script>
+</html>
