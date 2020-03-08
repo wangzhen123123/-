@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    img{
+        width: 1000px;
+        height: 300px;
+        float: left;
+    }
+    #ou{
+      position: absolute;
+      top: 0px;
+      width: 1000px;
+      height: 300px;
+      /* border: #000 solid 1px; */
+      overflow: hidden;
+    }
+    #in{
+        position: absolute;
+        top: 0px;
+        width: 4000px;
+        height: 300px;
+    }
+ /* #left{
+  background: url("未标题-1.png");
+     left: 30px;
+ } */
+ #right{
+     position: absolute;
+     right: 30px;
+ }
+ span{
+     width: 50px;
+     height: 50px;
+     display: block;
+     position: absolute;
+     top: 50%;
+     margin-top: -50%;
+     z-index: 100;
+ }
+ button{
+    position: absolute;
+    top: 400px;
+    width: 100px;
+    height:40px;
+    margin-right: 20px;
+ }
+    </style>
+</head>
+<body> 
+        <button id="left">上一张</button> 
+        <button id="right">下一张</button>
+    <div id="ou" >
+           <button>上一张</button>
+      <div id="in"  style="left: 0">
+       <img src="0.jpg" ><img src="1.jpg"><img src="2.jpg"><img src="3.jpg">
+      </div>
+     
+    </div>
+  
+</body>
+<script>
+    var ou=document.getElementById("ou");
+    var inn=document.getElementById("in")
+// setInterval(ou.onscroll=function(){
+//     if(ou.scrollLeft>=900){
+//         inn.appendChild(inn.firstChild)
+//         ou.scrollLeft=0
+//     }else{
+//         ou.scrollLeft+=10;
+//     }
+// },500)
+var ina=document.getElementById("in");
+document.getElementById("left").onclick=function(){
+    scr()
+}
+document.getElementById("right").onclick=function(){
+    
+}
+function scr(){
+    if(parseInt(ina.style.left)<=-3000){
+        ina.style.left="0px";
+    }else{
+        ina.style.left=parseInt(ina.style.left)-1000+"px";
+    }
+}
+function ri(){
+    if(parseInt(ina.style.right)<=3000){
+        ina.style.right="0px";
+    }else{
+        ina.style.right=parseInt(ina.style.right)+1000+"px";
+    }
+}
+// setInterval(scr,2000)
+
+</script>
+</html>
